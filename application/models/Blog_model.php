@@ -7,6 +7,7 @@ class Blog_model extends CI_Model {
 		$this->load->database();
 	}
 
+   //-- Usuarios -- //
 	public function get_users($slug = FALSE) 
 	{
 		if ($slug === FALSE)
@@ -38,7 +39,7 @@ class Blog_model extends CI_Model {
 		return $this->db->insert('usuarios', $data);
 	}
 
-
+  //--Contactos--//
 
 		public function set_contacts()
 	{
@@ -52,6 +53,7 @@ class Blog_model extends CI_Model {
 		return $this->db->insert('contactos', $data);
 	}
 
+ //--Publicaciones--//
 	public function get_posts($id = FALSE) {
 		if ($id===FALSE) {
 			$query = $this->db->select('*');
@@ -90,6 +92,7 @@ class Blog_model extends CI_Model {
 
 	}
 
+//--Comentarios--//
 	public function get_comments($id = FALSE)
 	{
 		$query = $this->db->select('*');
@@ -111,21 +114,7 @@ JOIN comentarios AS c ON c.id_publicacion = p.id_publicacion
 LIMIT 0 , 30*/
 	}
 
-		public function login_user($user,$pass)
-	{
-		$this->db->where('usuario',$user);
-		$this->db->where('password',$pass);
-		$query = $this->db->get('usuarios');
-		if($query->num_rows() == 1)
-		{
-			return $query->row();
-		}else{			
-			return $query->row();
-
-			$this->session->set_flashdata('usuario_incorrecto','Los datos introducidos son incorrectos');
-			redirect(base_url().'Users','refresh');
-		}
-	}
+	
 
 
 }

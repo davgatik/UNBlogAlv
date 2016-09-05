@@ -41,6 +41,18 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-knight'></span>&nbsp;&nbsp;<?php echo  $this->session->userdata('usuario'); ?><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><p class="navbar-text"><a href="<?php echo base_url() ?>index.php/Users/index_sign" target='_blank'><span class='glyphicon glyphicon-pencil'></span>&nbsp;Sign Up</a></p></li>
@@ -53,7 +65,7 @@
                                 Login via
                                 <div class="social-buttons">
                                     <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter <?php echo $this->session->userdata('user') ?></a>
                                 </div>
                                 or
                                  <form class="form" role="form" method="post" action="<?php echo base_url() ?>index.php/Users/" accept-charset="UTF-8" id="login-nav">

@@ -10,7 +10,7 @@ class Contacts extends CI_Controller {
 	}
 	public function index() {
 		$data['titulo'] = "Contacts";
-		$this->load->view('Contact_view', $data);
+		$this->load->view('contact_view', $data);
 
 	}
 	public function create_contact() {
@@ -24,12 +24,12 @@ class Contacts extends CI_Controller {
         if ($this->form_validation->run() === FALSE)
         {
         	
-        	$this->load->view('Contact_view', $data);
+        	$this->load->view('contact_view', $data);
         }
 
         else {
         	$this->Blog_model->set_contacts();//
-        	$this->load->view('Contact_view',$data);
+        	$this->load->view('contact_view',$data);
         }
 	}
 

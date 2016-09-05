@@ -11,7 +11,7 @@ class Posts extends CI_Controller {
 	  $data['posts'] = $this->Blog_model->get_posts();
       $data['title'] = "Posts";
       //$this->load->view('templates/header', $data);
-	  $this->load->view('Posts_view',$data);
+	  $this->load->view('posts_view',$data);
 	  //$this->load->view('templates/footer');
 	}
 
@@ -20,7 +20,8 @@ class Posts extends CI_Controller {
 
 		$data['comments'] = $this->Blog_model->get_comments($id);
 		if(empty($data['post'])){
-	}
+
+	    }
 
 		
 
@@ -30,7 +31,7 @@ class Posts extends CI_Controller {
 		
 
 		// $this->load->view('templates/header', $data);
-	     $this->load->view('Post_view',$data);
+	     $this->load->view('post_view',$data);
 	    // $this->load->view('templates/footer');
 	}
 
@@ -48,16 +49,18 @@ class Posts extends CI_Controller {
         if ($this->form_validation->run() === FALSE)
         {
         	
-        	$this->load->view('Create_Post_view', $data);
+        	$this->load->view('create_post_view', $data);
         }
 
         else {
         	$this->Blog_model->set_posts();//
-        	$this->load->view('Create_Post_view',$data);
+        	$this->load->view('create_post_view',$data);
         }
 	}
 
-	public function get_post(){}
+	public function get_post(){
+		
+	}
 }
 
  ?>

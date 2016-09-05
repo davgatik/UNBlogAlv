@@ -14,7 +14,7 @@
 <?php 
 $attributes = array('class' => 'form_login', 'id' => 'form_login');
 //echo form_open('Verifylogin', $attributes);
-echo form_open(base_url().'index.php/Users/new_user' , $attributes);
+echo form_open(base_url().'index.php/login/new_user' , $attributes);
 $user = array (
 	'name'=> 'user',
 	'id'=> 'user',
@@ -39,19 +39,15 @@ echo form_hidden('token',$token);
 echo form_submit('sub_login','Sign in');
 echo anchor('', 'Forgot your password?', 'class="forgot_pass"');
 echo anchor('Users/index_sign', 'Sign Up', 'class="forgot_sign"');
+if($this->session->flashdata('usuario_incorrecto'))
+{
+echo "<p>".$this->session->flashdata('usuario_incorrecto')."</p>";
+}
+					
 echo form_close() ?>
-					<?php 
-					if($this->session->flashdata('usuario_incorrecto'))
-					{
-					?>
-					<p><?php echo $this->session->flashdata('usuario_incorrecto')?></p>
-					<?php
-					}
-					?>
-
 </div>
-    <!--<script src="<?php echo base_url() ?>assets/js/validation/lib/jquery.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/validation/dist/jquery.validate.js"></script>-->
+    <script src="<?php echo base_url() ?>assets/js/validation/lib/jquery.js"></script>
+	<script src="<?php echo base_url() ?>assets/js/validation/dist/jquery.validate.js"></script>
     <script src="<?php echo base_url() ?>assets/js/login.js"></script>
 </body>
 </html>
