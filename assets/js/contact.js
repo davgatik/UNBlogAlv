@@ -153,6 +153,7 @@ var pathArray = window.location.pathname.split( '/' );
 				this.value = firstname + "." + lastname;
 			}
 		});
+		
 
 		//code to hide topic selection, disable for demo
 		var newsletter = $("#newsletter");
