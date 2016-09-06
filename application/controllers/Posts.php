@@ -2,17 +2,19 @@
 class Posts extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		//$this->load->helper('');
 		$this->load->helper('form');
 		$this->load->helper('url_helper');
 		$this->load->model('Blog_model');
 	}
 	public function index() {
 	  $data['posts'] = $this->Blog_model->get_posts();
+	  $data['categories'] = $this->Blog_model->get_categories();
       $data['title'] = "Posts";
-      //$this->load->view('templates/header', $data);
+      $this->load->view('templates/header', $data);
 	  $this->load->view('posts_view',$data);
-	  //$this->load->view('templates/footer');
+	  $this->load->view('templates/aside',$data);
+	  $this->load->view('templates/footer', $data);
+
 	}
 
 	public function view_post($id = NULL) {
@@ -22,20 +24,8 @@ class Posts extends CI_Controller {
 		if(empty($data['post'])){
 
 	    }
-
-		
-
-		//$data['title'] = $data['publication']['titulo'];
-
-
-		
-
-		// $this->load->view('templates/header', $data);
 	     $this->load->view('post_view',$data);
-	    // $this->load->view('templates/footer');
 	}
-
-
 
 	public function create_post(){
 

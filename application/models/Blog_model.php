@@ -7,7 +7,7 @@ class Blog_model extends CI_Model {
 		$this->load->database();
 	}
 
-   //-- Usuarios -- //
+   //-- users -- //
 	public function get_users($slug = FALSE) 
 	{
 		if ($slug === FALSE)
@@ -24,22 +24,17 @@ class Blog_model extends CI_Model {
 	public function set_users()
 	{
 		$this->load->helper('url');
-
-		//$slug = url_title($this->input->post('title'), 'dash', TRUE);
-
 		$data = array(
 			'nombre' => $this->input->post('name'),
 			'apellido' => $this->input->post('lastname'),
 			'email' => $this->input->post('email'),
 			'usuario' => $this->input->post('user'),
 			'password' => $this->input->post('pass')
-			//'slug' => $slug,
-			//'text' => $this->input->post('text')
 			);
 		return $this->db->insert('usuarios', $data);
 	}
 
-  //--Contactos--//
+  //--contacts--//
 
 		public function set_contacts()
 	{
@@ -53,7 +48,7 @@ class Blog_model extends CI_Model {
 		return $this->db->insert('contactos', $data);
 	}
 
- //--Publicaciones--//
+ //--posts--//
 	public function get_posts($id = FALSE) {
 		if ($id===FALSE) {
 			$query = $this->db->select('*');
@@ -65,6 +60,7 @@ class Blog_model extends CI_Model {
         if($query->num_rows() > 0 )
         {
         	
+            //return $query->result();
             return $query->result_array();
         }
 
@@ -92,7 +88,7 @@ class Blog_model extends CI_Model {
 
 	}
 
-//--Comentarios--//
+//--comments--//
 	public function get_comments($id = FALSE)
 	{
 		$query = $this->db->select('*');
@@ -105,13 +101,18 @@ class Blog_model extends CI_Model {
         {
             return $query->result_array();
         }
+	}
 
-/*
-        SELECT *
-FROM usuarios AS u
-JOIN publicaciones AS p ON p.id_usuario = u.id_usuario
-JOIN comentarios AS c ON c.id_publicacion = p.id_publicacion
-LIMIT 0 , 30*/
+
+	public function get_categories()
+	{
+		$query = $this->db->select('*');
+		$query = $this->db->from('categorias');
+		$query = $this->db->get();
+		//var_dump($query->result_array());
+		//exit;
+		return $query->result_array();
+
 	}
 
 	

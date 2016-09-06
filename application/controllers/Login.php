@@ -24,7 +24,7 @@ class Login extends CI_Controller
 				redirect(base_url().'admin_view');
 				break;
 			case 'editor':
-				redirect(base_url().'edito_viewr');
+				redirect(base_url().'edit_view');
 				break;	
 			case 'suscriptor':
 				redirect(base_url().'index.php/Posts');
@@ -55,6 +55,7 @@ public function new_user()
 				if($check_user == TRUE)
 				{
 					$data = array(
+					          ''    =>      $check_user->
 	                'id_usuario' 	=> 		$check_user->id_usuario,
 	                'perfil'		=>		$check_user->perfil,
 	                'usuario' 		=> 		$check_user->usuario

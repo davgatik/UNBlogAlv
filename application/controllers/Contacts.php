@@ -10,7 +10,10 @@ class Contacts extends CI_Controller {
 	}
 	public function index() {
 		$data['titulo'] = "Contacts";
+		$this->load->view('templates/header', $data);
 		$this->load->view('contact_view', $data);
+		$this->load->view('templates/aside', $data);
+		$this->load->view('templates/footer', $data);
 
 	}
 	public function create_contact() {
