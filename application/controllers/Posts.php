@@ -22,14 +22,7 @@ class Posts extends CI_Controller {
 		if(empty($data['post'])){
 
 	    }
-
-		
-
 		//$data['title'] = $data['publication']['titulo'];
-
-
-		
-
 		// $this->load->view('templates/header', $data);
 	     $this->load->view('post_view',$data);
 	    // $this->load->view('templates/footer');
