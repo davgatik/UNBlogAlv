@@ -102,6 +102,7 @@ var pathArray = window.location.pathname.split( '/' );
 					minlength: "<img src='"+path+"/assets/images/error.png'> Your password must be at least 10 characters long",
 					equalTo: "<img src='"+path+"/assets/images/error.png'> Please enter the same password as above"
 
+
 				}
 
 
