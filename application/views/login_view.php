@@ -12,28 +12,26 @@
 <body>
 <div class='container'>
 <?php 
-$attributes = array('class' => 'form_login', 'id' => 'form_login');
+$attributes = array('class' => 'form-login', 'id' => 'form-login');
 //echo form_open('Verifylogin', $attributes);
 echo form_open(base_url().'index.php/login/new_user' , $attributes);
 $user = array (
 	'name'=> 'user',
 	'id'=> 'user',
 	'placeholder' => '*Enter your username',
-	'class' => 'user',
-    ''=>'');
+	'class' => 'user');
 $pass = array (
 	'name' => 'pass',
 	'id' => 'pass',
 	'placeholder' => '*Enter your password',
-	''=>'',
 	'class' => 'pass',
 	'type'=>'password');
 ?>
 <center><h1><img src="<?php echo base_url() ?>assets/images/027449-glossy-black-icon-culture-space-alien1-sc37.png" width="70">UNBlogAlv</h1></center>
 <?php
-echo form_label("Username: <img src='".base_url()."assets/images/success.png' class='validate_check_user'>",'user');
+echo form_label("Username:",'user');
 echo form_input($user);
-echo form_label("Password: <img src='".base_url()."assets/images/success.png' class='validate_check_pass'>",'pass');
+echo form_label("Password:",'pass');
 echo form_input($pass);
 echo form_hidden('token',$token);
 echo form_submit('sub_login','Sign in');
@@ -48,6 +46,6 @@ echo form_close() ?>
 </div>
     <script src="<?php echo base_url() ?>assets/js/validation/lib/jquery.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/validation/dist/jquery.validate.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/login.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/script.js"></script>
 </body>
 </html>

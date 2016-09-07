@@ -55,6 +55,7 @@ public function new_user()
 				if($check_user == TRUE)
 				{
 					$data = array(
+					'is_logued_in' 	=> 		TRUE,
 	                'id_usuario' 	=> 		$check_user->id_usuario,
 	                'perfil'		=>		$check_user->perfil,
 	                'usuario' 		=> 		$check_user->usuario

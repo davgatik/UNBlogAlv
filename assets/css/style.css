@@ -157,7 +157,8 @@ footer a {
 .h1-contact {
 	color:#333;
 }
- #email-error, #subject-error, #message-error{
+ #email-error, #subject-error, #message-error, #user-error, #pass-error{
     	color: #D23A3A;
     	font-size: 12px;
  }
+

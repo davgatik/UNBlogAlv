@@ -12,7 +12,7 @@
 <body>
 <div class='container'>
 <?php 
-$attributes = array('class' => 'form_login', 'id' => 'form_login');
+$attributes = array('class' => 'form-sign', 'id' => 'form-sign');
 echo form_open('Login/create_user', $attributes);
 
 $name = array (
@@ -81,6 +81,6 @@ echo form_close() ?>
 
 <script src="<?php echo base_url() ?>assets/js/validation/lib/jquery.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/validation/dist/jquery.validate.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/sign.js"></script>
+	<script src="<?php echo base_url() ?>assets/js/script.js"></script>
 </body>
 </html>

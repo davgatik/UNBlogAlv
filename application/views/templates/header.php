@@ -21,14 +21,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">UNBlogAlv</a>
+      <a class="navbar-brand" href="">UNBlogAlv</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo base_url() ?>index.php/Posts/"><span class='glyphicon glyphicon-home'></span>&nbsp;Home</a></li>
-        <li><a href="<?php echo base_url() ?>index.php/Contacts/"><span class='glyphicon glyphicon-phone-alt'></span>&nbsp;Contact</a></li>
+        <li class="<?php echo $active_post ?>"><a href="<?php echo base_url() ?>index.php/Posts/"><span class='glyphicon glyphicon-home'></span>&nbsp;Home</a></li>
+        <li class="<?php echo $active_contact ?>"><a href="<?php echo base_url() ?>index.php/Contacts/"><span class='glyphicon glyphicon-phone-alt'></span>&nbsp;Contact</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-knight'></span>&nbsp;&nbsp;Categories<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -37,21 +37,26 @@
           <?php endforeach; ?>
           </ul>
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-knight'></span>&nbsp;&nbsp;<?php echo  $this->session->userdata('usuario'); ?><span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text"><a href="<?php echo base_url() ?>index.php/Users/index_sign" target='_blank'><span class='glyphicon glyphicon-pencil'></span>&nbsp;Sign Up</a></p></li>
+       
+        <li><p class="navbar-text"><a href="<?php echo base_url() ?>index.php/users/index_sign" target='_blank'><span class='glyphicon glyphicon-pencil'></span>&nbsp;Sign Up</a></p></li>
+        <!--User-->
+        <?php  if ($this->session->userdata('is_logued_in') == TRUE): ?>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;<b><?php echo  ucfirst($this->session->userdata('usuario')); ?></b><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Acount</a></li>
+            <li><a href="#">My Posts</a></li>
+            <li><a href="#">Upload Post</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php echo base_url() ?>index.php/login">Re-Login</a></li>
+            <li><a href="<?php echo base_url() ?>index.php/login/logout_ci">Log Out</a></li>
+          </ul>
+        </li>
+        <?php else: ?>
+        <!--Login end login-->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-user'>&nbsp;</span><b>Sign In</b> <span class="caret"></span></a>
             <ul id="login-dp" class="dropdown-menu">
@@ -64,14 +69,14 @@
                                     <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter <?php echo $this->session->userdata('user') ?></a>
                                 </div>
                                 or
-                                 <form class="form" role="form" method="post" action="<?php echo base_url() ?>index.php/Users/" accept-charset="UTF-8" id="login-nav">
+                                 <form class="form" role="form" method="post" action="<?php echo base_url() ?>index.php/login/new_user" id='form-login' accept-charset="UTF-8">
                                         <div class="form-group">
-                                             <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                             <label class="sr-only" for="user">User:</label>
+                                             <input type="text" class="form-control" name='user' id="user" placeholder="*Enter your user" required>
                                         </div>
                                         <div class="form-group">
-                                             <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                             <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                             <label class="sr-only" for="pass">Password</label>
+                                             <input type="password" class="form-control" id="pass" placeholder="*Enter your password" name='pass' required>
                                              <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                         </div>
                                         <div class="form-group">
@@ -92,6 +97,8 @@
             </ul>
 
         </li>
+      <?php endif; ?>
+        <!--end login-->
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">

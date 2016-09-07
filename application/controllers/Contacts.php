@@ -2,17 +2,18 @@
 class Contacts extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		//$this->load->helper('');
 		$this->load->library('bcrypt');
 		$this->load->helper('form');
 		$this->load->helper('url_helper');
 		$this->load->model('Blog_model');
 	}
 	public function index() {
-		$data['titulo'] = "Contacts";
+		$data['categories'] = $this->Blog_model->get_categories();
+		$data['title'] = "Contacts";
+		$data['active_contact'] = 'active';
+		$data['active_post'] = '';
 		$this->load->view('templates/header', $data);
 		$this->load->view('contact_view', $data);
-		$this->load->view('templates/aside', $data);
 		$this->load->view('templates/footer', $data);
 
 	}

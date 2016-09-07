@@ -75,6 +75,15 @@ class Blog_model extends CI_Model {
 
 	}
 
+   public function recent_posts(){
+   	 $query = $this->db->select("*");
+   	 $query = $this->db->from('publicaciones');
+   	 $query = $this->db->order_by('fecha',"desc");
+   	 $query = $this->db->limit(5,0);
+   	 $query = $this->db->get();
+   	 return $query->result_array();
+   }
+
 	public function set_posts() {
 
 		$this->load->helper('url');

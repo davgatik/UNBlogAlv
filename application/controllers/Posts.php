@@ -7,7 +7,10 @@ class Posts extends CI_Controller {
 		$this->load->model('Blog_model');
 	}
 	public function index() {
+	  $data['active_post'] = 'active';
+	  $data['active_contact'] = '';
 	  $data['posts'] = $this->Blog_model->get_posts();
+	  $data['recent_posts'] = $this->Blog_model->recent_posts();
 	  $data['categories'] = $this->Blog_model->get_categories();
       $data['title'] = "Posts";
       $this->load->view('templates/header', $data);
@@ -18,22 +21,22 @@ class Posts extends CI_Controller {
 	}
 
 	public function view_post($id = NULL) {
-	 $data['categories'] = $this->Blog_model->get_categories();
-	  $data['post'] = $this->Blog_model->get_posts($id);
+	$data['active_post'] = 'active';
+	$data['active_contact'] = '';
+	$data['title'] = "Posts";
+	$data['categories'] = $this->Blog_model->get_categories();
+	$data['post'] = $this->Blog_model->get_posts($id);
+    $data['comments'] = $this->Blog_model->get_comments($id);
+	if(empty($data['post'])){
 
-		$data['comments'] = $this->Blog_model->get_comments($id);
-		if(empty($data['post'])){
-
-	    }
-	     $this->load->view('templates/header', $data);
-	     $this->load->view('post_view',$data);
-	     $this->load->view('templates/aside',$data);
-	     $this->load->view('templates/footer', $data);
-
+	 }
+	$this->load->view('templates/header', $data);
+	$this->load->view('post_view',$data);
+    $this->load->view('templates/aside',$data);
+    $this->load->view('templates/footer', $data);
 	}
 
-	public function create_post(){
-
+	public function create_post() {
 		$data['titulo'] = "Posts";
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -53,9 +56,6 @@ class Posts extends CI_Controller {
         }
 	}
 
-	public function get_post(){
-		
-	}
 }
 
  ?>
