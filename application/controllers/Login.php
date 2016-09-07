@@ -55,7 +55,6 @@ public function new_user()
 				if($check_user == TRUE)
 				{
 					$data = array(
-					          ''    =>      $check_user->
 	                'id_usuario' 	=> 		$check_user->id_usuario,
 	                'perfil'		=>		$check_user->perfil,
 	                'usuario' 		=> 		$check_user->usuario

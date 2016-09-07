@@ -18,13 +18,18 @@ class Posts extends CI_Controller {
 	}
 
 	public function view_post($id = NULL) {
+	 $data['categories'] = $this->Blog_model->get_categories();
 	  $data['post'] = $this->Blog_model->get_posts($id);
 
 		$data['comments'] = $this->Blog_model->get_comments($id);
 		if(empty($data['post'])){
 
 	    }
+	     $this->load->view('templates/header', $data);
 	     $this->load->view('post_view',$data);
+	     $this->load->view('templates/aside',$data);
+	     $this->load->view('templates/footer', $data);
+
 	}
 
 	public function create_post(){
