@@ -19,20 +19,28 @@ $user = array (
 	'name'=> 'user',
 	'id'=> 'user',
 	'placeholder' => '*Enter your username',
-	'class' => 'user');
+	//'class' => '',
+	'value' => set_value('user')
+	);
 $pass = array (
 	'name' => 'pass',
 	'id' => 'pass',
 	'placeholder' => '*Enter your password',
-	'class' => 'pass',
-	'type'=>'password');
+	//'class' => '',
+	'type'=>'password',
+	'value' => set_value('pass')
+	);
+$attributes_validate = array('class' => 'p-validate');
 ?>
+
 <center><h1><img src="<?php echo base_url() ?>assets/images/027449-glossy-black-icon-culture-space-alien1-sc37.png" width="70">UNBlogAlv</h1></center>
 <?php
 echo form_label("Username:",'user');
 echo form_input($user);
+echo form_error('user' , '<p id="user-error">');
 echo form_label("Password:",'pass');
 echo form_input($pass);
+echo form_error('pass','<p id="pass-error">');
 echo form_hidden('token',$token);
 echo form_submit('sub_login','Sign in');
 echo anchor('', 'Forgot your password?', 'class="forgot_pass"');

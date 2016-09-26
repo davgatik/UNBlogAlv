@@ -7,7 +7,6 @@
         
     </div>
 </section>
-
     <section class="main container">
         <div class="row">
             <section class='posts col-md-9'>
@@ -26,7 +25,7 @@
                     <h2 class='post-title'>
                         <a href="#"><?php echo $post['titulo'] ?></a>
                     </h2>
-                    <p><span class='post-fecha'>17 de Julio de 2016</span>  por <span class='post-autor'><a href="#">David Gatica</a></span></p>
+                    <p><span class='post-fecha'><?php $date = date('l F d, Y',strtotime($post['fecha']));echo $date;?></span>  by <span class='post-autor'><a href="#">David Gatica</a></span></p>
                     <p class='post-contenido text-justify'>
                         <?php echo $post['descripcion'] ?>
                     </p>
@@ -50,5 +49,4 @@
                         </ul>
                     </div>
                 </nav>
-
             </section>

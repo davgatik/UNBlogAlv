@@ -36,38 +36,44 @@ class Login extends CI_Controller
 		}
 	}
 
-public function new_user()
-	{
-		if($this->input->post('token') && $this->input->post('token') == $this->session->userdata('token'))
-		{
-            $this->form_validation->set_rules('user', 'user', 'required');
-            $this->form_validation->set_rules('pass', 'pass', 'required');
-
-            //lanzamos mensajes de error si es que los hay
-            
-			if($this->form_validation->run() == FALSE)
-			{
-				$this->index();
-			}else{
-				$user = $this->input->post('user');
-				$pass = $this->input->post('pass'); //sha1
-				$check_user = $this->Login_model->login_user($user,$pass);
-				if($check_user == TRUE)
-				{
-					$data = array(
-					'is_logued_in' 	=> 		TRUE,
-	                'id_usuario' 	=> 		$check_user->id_usuario,
-	                'perfil'		=>		$check_user->perfil,
-	                'usuario' 		=> 		$check_user->usuario
-            		);		
-					$this->session->set_userdata($data);
-					$this->index();
-				}
-			}
-		}else{
-			redirect(base_url().'index.php/login');
-		}
+	public function relogin() {
+		$data['titulo'] = 'Sign In';
+		$data['token'] = $this->token();
+		$this->load->view('login_view',$data);
 	}
+
+	public function new_user()
+		{
+			if($this->input->post('token') && $this->input->post('token') == $this->session->userdata('token'))
+			{
+	            $this->form_validation->set_rules('user', 'user', 'required|trim|min_length[5]|max_length[150]');
+	            $this->form_validation->set_rules('pass', 'pass', 'required|trim|min_length[10]|max_length[150]');
+
+	            //lanzamos mensajes de error si es que los hay
+	            
+				if($this->form_validation->run() == FALSE)
+				{
+					$this->index();
+				}else{
+					$user = $this->input->post('user');
+					$pass = $this->input->post('pass'); //sha1
+					$check_user = $this->Login_model->login_user($user,$pass);
+					if($check_user == TRUE)
+					{
+						$data = array(
+						'is_logued_in' 	=> 		TRUE,
+		                'id_usuario' 	=> 		$check_user->id_usuario,
+		                'perfil'		=>		$check_user->perfil,
+		                'usuario' 		=> 		$check_user->usuario
+	            		);		
+						$this->session->set_userdata($data);
+						$this->index();
+					}
+				}
+			}else{
+				redirect(base_url().'index.php/login');
+			}
+		}
 	
 	public function token()
 	{

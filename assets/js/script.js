@@ -100,44 +100,31 @@ $().ready(function() {
 		// validate signup form on keyup and submit
 		$("#form-contact").validate({
 			rules: {
-				subject: "required",
-				message: "required",
+				subject: {
+					required: true,
+					minlength: 5
+				},
+				message: {
+					required: true,
+					minlength: 50
+				},
 				email: {
 					required: true,
 					email: true
-				},
-				titulo: "required",
-				fecha: "required",
-				descripcion: "required",
-
-				user: "required",
-				pass: {
-					required: true,
-					minlength: 10
-				},
-				cpass: {
-					required: true,
-					minlength: 10,
-					equalTo: "#pass"
 				}
 			},
 			messages: {
-				subject: "<img src='"+path+"/assets/images/error.png'> Please, enter a subject",
-				message: "<img src='"+path+"/assets/images/error.png'> Please enter a message",
+				subject: {
+					required:  "<img src='"+path+"/assets/images/error.png'> Please, enter a subject",
+					minlength: "<img src='"+path+"/assets/images/error.png'> Your password must be at least 5 characters long"
+				},
+				message: {
+					required: "<img src='"+path+"/assets/images/error.png'> Please enter a message",
+					minlength: "<img src='"+path+"/assets/images/error.png'> Your password must be at least 50 characters long"
+				},
 				email: {
 					required: "<img src='"+path+"/assets/images/error.png'> Please, enter a email address",
 					email: "<img src='"+path+"/assets/images/error.png'> Please enter a valid email address"
-				},
-				user: "<img src='"+path+"/assets/images/error.png'> Please, enter a username",
-				pass: {
-					required: "<img src='"+path+"/assets/images/error.png'> Please, enter your password",
-					minlength: "<img src='"+path+"/assets/images/error.png'> Your password must be at least 10 characters long"
-				},
-				cpass: {
-					required: "<img src='"+path+"/assets/images/error.png'> Please, re-enter your password",
-					minlength: "<img src='"+path+"/assets/images/error.png'> Your password must be at least 10 characters long",
-					equalTo: "<img src='"+path+"/assets/images/error.png'> Please enter the same password as above"
-
 				}
 			}
 		});

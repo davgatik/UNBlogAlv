@@ -20,15 +20,13 @@ class Users extends CI_Controller {
 	}
 
 	public function create_user() {
-		$this->load->helper('form');
-		$this->load->library('form_validation');
 		$data['title'] = 'Sign Up';
-		$this->form_validation->set_rules('name', 'name', 'required');
-        $this->form_validation->set_rules('lastname','lastname','required');
-        $this->form_validation->set_rules('email','email','required');
-        $this->form_validation->set_rules('user','user','required');
-        $this->form_validation->set_rules('pass','pass','required');
-        $this->form_validation->set_rules('cpass','cpass','required');
+		$this->form_validation->set_rules('name', 'name', 'required|trim|min_length[5]|max_length[150]');
+        $this->form_validation->set_rules('lastname','lastname','required|trim|min_length[5]|max_length[150]');
+        $this->form_validation->set_rules('email','email','required|trim|min_length[5]|max_length[150]|valid_email');
+        $this->form_validation->set_rules('user','user','required|trim|min_length[5]|max_length[150]');
+        $this->form_validation->set_rules('pass','pass','required|trim|min_length[10]|max_length[150]');
+        $this->form_validation->set_rules('cpass','cpass','required|trim|min_length[10]|max_length[150]|matches[pass]');
 
         if ($this->form_validation->run() === FALSE)
         {

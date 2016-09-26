@@ -71,6 +71,11 @@ input[type='submit']:hover {
 	display: none;
 }
 
+.message_error {
+	color: #D23A3A;
+    font-size: 12px;
+}
+
 
 
 

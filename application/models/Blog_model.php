@@ -29,7 +29,8 @@ class Blog_model extends CI_Model {
 			'apellido' => $this->input->post('lastname'),
 			'email' => $this->input->post('email'),
 			'usuario' => $this->input->post('user'),
-			'password' => $this->input->post('pass')
+			'password' => $this->input->post('pass'),
+			'perfil' => $this->input->post('suscriptor')
 			);
 		return $this->db->insert('usuarios', $data);
 	}
@@ -111,6 +112,15 @@ class Blog_model extends CI_Model {
             return $query->result_array();
         }
 	}
+
+	/*public function get_tcomments($id = False) 
+	{
+		$query = $this->db->select('count(*)');
+		$query = $this->db->from('comentarios');
+		$query = $this->db->where('id_usuario' , $id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}*/
 
 
 	public function get_categories()

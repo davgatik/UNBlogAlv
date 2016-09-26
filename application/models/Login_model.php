@@ -1,7 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * 
- */
+
 class Login_model extends CI_Model {
 	
 	public function __construct() {
@@ -17,7 +15,7 @@ class Login_model extends CI_Model {
 		{
 			return $query->row();
 		}else{
-			$this->session->set_flashdata('usuario_incorrecto','Los datos introducidos son incorrectos');
+			$this->session->set_flashdata('usuario_incorrecto','<p class="message_error"><img src='.base_url().'/assets/images/error.png>The username and / or password are incorrect</p>');
 			redirect(base_url().'index.php/login','refresh');
 		}
 	}

@@ -7,10 +7,11 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
     <link rel="shortcut icon"   type="image/x-icon" href="<?php echo base_url() ?>assets/images/027449-glossy-black-icon-culture-space-alien1-sc37.ico">
+  <link href="<?php echo base_url() ?>assets/js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
 
 <body>
-<header>
+<header class='<?php echo $padding_header ?>'>
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,7 +42,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
        
-        <li><p class="navbar-text"><a href="<?php echo base_url() ?>index.php/users/index_sign" target='_blank'><span class='glyphicon glyphicon-pencil'></span>&nbsp;Sign Up</a></p></li>
+        <li><a href="<?php echo base_url() ?>index.php/users/index_sign" target='_blank'><span class='glyphicon glyphicon-pencil'></span>&nbsp;Sign Up</a></li>
         <!--User-->
         <?php  if ($this->session->userdata('is_logued_in') == TRUE): ?>
         <li class="dropdown">
@@ -49,9 +50,9 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Acount</a></li>
             <li><a href="#">My Posts</a></li>
-            <li><a href="#">Upload Post</a></li>
+            <li><a href="<?php echo base_url() ?>index.php/posts/create_post">Upload Post</a></li>
             <li class="divider"></li>
-            <li><a href="<?php echo base_url() ?>index.php/login">Re-Login</a></li>
+            <li><a href="<?php echo base_url() ?>index.php/login/relogin">Re-Login</a></li>
             <li><a href="<?php echo base_url() ?>index.php/login/logout_ci">Log Out</a></li>
           </ul>
         </li>
@@ -69,14 +70,15 @@
                                     <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter <?php echo $this->session->userdata('user') ?></a>
                                 </div>
                                 or
-                                 <form class="form" role="form" method="post" action="<?php echo base_url() ?>index.php/login/new_user" id='form-login' accept-charset="UTF-8">
+                                 <form class="form" role="form" method="post" action="<?php  echo base_url() ?>index.php/login/new_user" id='form-login' accept-charset="UTF-8">
                                         <div class="form-group">
                                              <label class="sr-only" for="user">User:</label>
-                                             <input type="text" class="form-control" name='user' id="user" placeholder="*Enter your user" required>
+                                             <input type="text" class="form-control" name='user' id="user" placeholder="*Enter your user">
+                                             <?php echo form_hidden('token',$token); ?>
                                         </div>
                                         <div class="form-group">
                                              <label class="sr-only" for="pass">Password</label>
-                                             <input type="password" class="form-control" id="pass" placeholder="*Enter your password" name='pass' required>
+                                             <input type="password" class="form-control" id="pass" placeholder="*Enter your password" name='pass'>
                                              <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                         </div>
                                         <div class="form-group">
