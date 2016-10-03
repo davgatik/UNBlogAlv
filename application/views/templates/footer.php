@@ -33,6 +33,7 @@
 <p><a href="<?php echo site_url('Posts/view_post/'.$post['id_publicacion']); ?>">View Article</a></p>
 
 <?php endforeach; ?>-->
+
 <script type="text/javascript" src='<?php echo base_url()?>assets/js/jquery.js'></script> 
 <script type="text/javascript" src='<?php echo base_url()?>assets/js/bootstrap.min.js'></script>
 <script src="<?php echo base_url() ?>assets/js/validation/dist/jquery.validate.js"></script>
@@ -73,5 +74,7 @@
         forceParse: 0
     });
 </script>
+<script src="<?php echo base_url()?>assets/js/sweetalert.min.js"></script>
+<?php echo $script; ?>
 </body>
 </html>

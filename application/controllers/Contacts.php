@@ -8,7 +8,8 @@ class Contacts extends CI_Controller {
 		$this->load->model('Blog_model');
 	}
 	public function index() {
-		$data['padding_header'] = 'padding_header' ;
+		$data['padding_header'] = 'padding_header';
+		$data['script'] = "";
 		$data['categories'] = $this->Blog_model->get_categories();
 		$data['title'] = "Contacts";
 		$data['active_contact'] = 'active';
@@ -18,10 +19,12 @@ class Contacts extends CI_Controller {
 		$this->load->view('contact_view', $data);
 		$this->load->view('templates/footer', $data);
 
+
 	}
 	public function create_contact() {
+		$data['padding_header'] = 'padding_header';
 		$data['categories'] = $this->Blog_model->get_categories();
-		$data['titulo'] = "Contacts";
+		$data['title'] = "Contacts";
 		$this->load->helper('form');
 		$data['active_contact'] = 'active';
 		$data['active_post'] = '';
@@ -38,8 +41,12 @@ class Contacts extends CI_Controller {
         }
 
         else {
-        	$this->Blog_model->set_contacts();//
+        	$this->Blog_model->set_contacts();
+
+        	$this->load->view('templates/header', $data);
+        	$data['script'] = "<script>swal('New Contact Added!')</script>";
         	$this->load->view('contact_view',$data);
+			$this->load->view('templates/footer', $data);
         }
 	}
 

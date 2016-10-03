@@ -12,8 +12,6 @@ class Users extends CI_Controller {
 
 	}
 	
-
-
 	public function index_sign() {
 		$data['titulo'] = "Sign Up";
 		$this->load->view('sign_view', $data);
